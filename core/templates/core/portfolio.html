@@ -1,0 +1,253 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block content %}
+<main id="main">
+ <!-- ======= Our Portfolio Section ======= -->
+ <section class="breadcrumbs">
+  <div class="container">
+   <div class="d-flex justify-content-between align-items-center">
+    <h2>
+     Our Portfolio
+    </h2>
+    <ol>
+     <li>
+      <a href="{% static 'core/index.html' %}">
+       Home
+      </a>
+     </li>
+     <li>
+      Our Portfolio
+     </li>
+    </ol>
+   </div>
+  </div>
+ </section>
+ <!-- End Our Portfolio Section -->
+ <!-- ======= Portfolio Section ======= -->
+ <section class="portfolio">
+  <div class="container">
+   <div class="row">
+    <div class="col-lg-12">
+     <ul id="portfolio-flters">
+      <li class="filter-active" data-filter="*">
+       All
+      </li>
+      <li data-filter=".filter-app">
+       App
+      </li>
+      <li data-filter=".filter-card">
+       Card
+      </li>
+      <li data-filter=".filter-web">
+       Web
+      </li>
+     </ul>
+    </div>
+   </div>
+   <div class="row portfolio-container" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
+    <div class="col-lg-4 col-md-6 filter-app">
+     <div class="portfolio-item">
+      <img alt="" class="img-fluid" src="{% static 'core/assets/img/portfolio/portfolio-1.jpg' %}"/>
+      <div class="portfolio-info">
+       <h3>
+        <a class="venobox" data-gall="portfolioGallery" href="{% static 'core/assets/img/portfolio/portfolio-1.jpg' %}" title="App 1">
+         App 1
+        </a>
+       </h3>
+       <div>
+        <a class="venobox" data-gall="portfolioGallery" href="{% static 'core/assets/img/portfolio/portfolio-1.jpg' %}" title="App 1">
+         <i class="bx bx-plus">
+         </i>
+        </a>
+        <a href="{% static 'core/portfolio-details.html' %}" title="Portfolio Details">
+         <i class="bx bx-link">
+         </i>
+        </a>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-4 col-md-6 filter-web">
+     <div class="portfolio-item">
+      <img alt="" class="img-fluid" src="{% static 'core/assets/img/portfolio/portfolio-2.jpg' %}"/>
+      <div class="portfolio-info">
+       <h3>
+        <a class="venobox" data-gall="portfolioGallery" href="{% static 'core/assets/img/portfolio/portfolio-2.jpg' %}" title="Web 3">
+         Web 3
+        </a>
+       </h3>
+       <div>
+        <a class="venobox" data-gall="portfolioGallery" href="{% static 'core/assets/img/portfolio/portfolio-2.jpg' %}" title="Web 3">
+         <i class="bx bx-plus">
+         </i>
+        </a>
+        <a href="{% static 'core/portfolio-details.html' %}" title="Portfolio Details">
+         <i class="bx bx-link">
+         </i>
+        </a>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-4 col-md-6 filter-app">
+     <div class="portfolio-item">
+      <img alt="" class="img-fluid" src="{% static 'core/assets/img/portfolio/portfolio-3.jpg' %}"/>
+      <div class="portfolio-info">
+       <h3>
+        <a class="venobox" data-gall="portfolioGallery" href="{% static 'core/assets/img/portfolio/portfolio-3.jpg' %}" title="App 2">
+         App 2
+        </a>
+       </h3>
+       <div>
+        <a class="venobox" data-gall="portfolioGallery" href="{% static 'core/assets/img/portfolio/portfolio-3.jpg' %}" title="App 2">
+         <i class="bx bx-plus">
+         </i>
+        </a>
+        <a href="{% static 'core/portfolio-details.html' %}" title="Portfolio Details">
+         <i class="bx bx-link">
+         </i>
+        </a>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-4 col-md-6 filter-card">
+     <div class="portfolio-item">
+      <img alt="" class="img-fluid" src="{% static 'core/assets/img/portfolio/portfolio-4.jpg' %}"/>
+      <div class="portfolio-info">
+       <h3>
+        <a class="venobox" data-gall="portfolioGallery" href="{% static 'core/assets/img/portfolio/portfolio-4.jpg' %}" title="Card 2">
+         Card 2
+        </a>
+       </h3>
+       <div>
+        <a class="venobox" data-gall="portfolioGallery" href="{% static 'core/assets/img/portfolio/portfolio-4.jpg' %}" title="Card 2">
+         <i class="bx bx-plus">
+         </i>
+        </a>
+        <a href="{% static 'core/portfolio-details.html' %}" title="Portfolio Details">
+         <i class="bx bx-link">
+         </i>
+        </a>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-4 col-md-6 filter-web">
+     <div class="portfolio-item">
+      <img alt="" class="img-fluid" src="{% static 'core/assets/img/portfolio/portfolio-5.jpg' %}"/>
+      <div class="portfolio-info">
+       <h3>
+        <a class="venobox" data-gall="portfolioGallery" href="{% static 'core/assets/img/portfolio/portfolio-5.jpg' %}" title="Web 2">
+         Web 2
+        </a>
+       </h3>
+       <div>
+        <a class="venobox" data-gall="portfolioGallery" href="{% static 'core/assets/img/portfolio/portfolio-5.jpg' %}" title="Web 2">
+         <i class="bx bx-plus">
+         </i>
+        </a>
+        <a href="{% static 'core/portfolio-details.html' %}" title="Portfolio Details">
+         <i class="bx bx-link">
+         </i>
+        </a>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-4 col-md-6 filter-app">
+     <div class="portfolio-item">
+      <img alt="" class="img-fluid" src="{% static 'core/assets/img/portfolio/portfolio-6.jpg' %}"/>
+      <div class="portfolio-info">
+       <h3>
+        <a class="venobox" data-gall="portfolioGallery" href="{% static 'core/assets/img/portfolio/portfolio-6.jpg' %}" title="App 3">
+         App 3
+        </a>
+       </h3>
+       <div>
+        <a class="venobox" data-gall="portfolioGallery" href="{% static 'core/assets/img/portfolio/portfolio-6.jpg' %}" title="App 3">
+         <i class="bx bx-plus">
+         </i>
+        </a>
+        <a href="{% static 'core/portfolio-details.html' %}" title="Portfolio Details">
+         <i class="bx bx-link">
+         </i>
+        </a>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-4 col-md-6 filter-card">
+     <div class="portfolio-item">
+      <img alt="" class="img-fluid" src="{% static 'core/assets/img/portfolio/portfolio-7.jpg' %}"/>
+      <div class="portfolio-info">
+       <h3>
+        <a class="venobox" data-gall="portfolioGallery" href="{% static 'core/assets/img/portfolio/portfolio-7.jpg' %}" title="Card 1">
+         Card 1
+        </a>
+       </h3>
+       <div>
+        <a class="venobox" data-gall="portfolioGallery" href="{% static 'core/assets/img/portfolio/portfolio-7.jpg' %}" title="Card 1">
+         <i class="bx bx-plus">
+         </i>
+        </a>
+        <a href="{% static 'core/portfolio-details.html' %}" title="Portfolio Details">
+         <i class="bx bx-link">
+         </i>
+        </a>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-4 col-md-6 filter-card">
+     <div class="portfolio-item">
+      <img alt="" class="img-fluid" src="{% static 'core/assets/img/portfolio/portfolio-8.jpg' %}"/>
+      <div class="portfolio-info">
+       <h3>
+        <a class="venobox" data-gall="portfolioGallery" href="{% static 'core/assets/img/portfolio/portfolio-8.jpg' %}" title="Card 3">
+         Card 3
+        </a>
+       </h3>
+       <div>
+        <a class="venobox" data-gall="portfolioGallery" href="{% static 'core/assets/img/portfolio/portfolio-8.jpg' %}" title="Card 3">
+         <i class="bx bx-plus">
+         </i>
+        </a>
+        <a href="{% static 'core/portfolio-details.html' %}" title="Portfolio Details">
+         <i class="bx bx-link">
+         </i>
+        </a>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-4 col-md-6 filter-web">
+     <div class="portfolio-item">
+      <img alt="" class="img-fluid" src="{% static 'core/assets/img/portfolio/portfolio-9.jpg' %}"/>
+      <div class="portfolio-info">
+       <h3>
+        <a class="venobox" data-gall="portfolioGallery" href="{% static 'core/assets/img/portfolio/portfolio-9.jpg' %}" title="Web 1">
+         Web 1
+        </a>
+       </h3>
+       <div>
+        <a class="venobox" data-gall="portfolioGallery" href="{% static 'core/assets/img/portfolio/portfolio-9.jpg' %}" title="Web 1">
+         <i class="bx bx-plus">
+         </i>
+        </a>
+        <a href="{% static 'core/portfolio-details.html' %}" title="Portfolio Details">
+         <i class="bx bx-link">
+         </i>
+        </a>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </section>
+ <!-- End Portfolio Section -->
+</main>
+<!-- End #main -->
+{% endblock content %}

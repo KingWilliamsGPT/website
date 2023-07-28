@@ -1,0 +1,236 @@
+{% extends './base.html' %}
+{% load static help humanize %}
+
+
+{% block title %}
+    {{ blog.title }}
+{% endblock title %}
+        
+
+{% block content %}
+    {% set_links %}
+    {% url 'core:blog_detail' blog.slug as blog_url %}
+  <main id="main">
+   <!-- ======= Blog Section ======= -->
+   <section class="breadcrumbs">
+    <div class="container">
+     <div class="d-flex justify-content-between align-items-center">
+      <h2>
+       Blog
+      </h2>
+      <ol>
+       <li>
+        <a href="{{ index_link }}">
+         Home
+        </a>
+       </li>
+       <li>
+        <a href="{{ blog_link }}">
+         Blog
+        </a>
+       </li>
+       <li>
+                {{ blog.title }}
+       </li>
+      </ol>
+     </div>
+    </div>
+   </section>
+   <!-- End Blog Section -->
+   <!-- ======= Blog Section ======= -->
+   <section class="blog" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
+    <div class="container">
+     <div class="row">
+      <div class="col-lg-8 entries mx-auto">
+        
+       <!-- Start blog entry -->
+       <article class="entry entry-single">
+        <div class="entry-img">
+         <img alt="" class="img-fluid" src="{{ blog.image.url }}"/>
+        </div>
+        <h2 class="entry-title">
+         <a href="{{ blog_url }}">
+          {{ blog.title }}
+         </a>
+        </h2>
+        <div class="entry-meta">
+         <ul>
+          <li class="d-flex align-items-center">
+           <i class="icofont-wall-clock">
+           </i>
+           <span href="{{ blog_url }}">
+            <time datetime="2020-01-01">
+                {{ blog.created_when|naturaltime }}
+            </span>
+           </a>
+          </li>
+          <li class="d-flex align-items-center">
+           <i class="icofont-comment">
+           </i>
+           <a href="{{ blog_url }}">
+                {{ blog.c_len }}
+           </a>
+          </li>
+         </ul>
+        </div>
+        <div class="entry-content mb-4">
+        {{ blog.content|safe }}
+
+         <!-- <img alt="" class="img-fluid" src="{% static 'core/assets/img/blog-post-4.jpg' %}"/> -->
+        </div>
+        <div class="entry-footer clearfix">
+         <div class="float-left">
+          <i class="icofont-folder">
+          </i>
+          <ul class="cats">
+           <li>
+            <a href="#">
+             Business
+            </a>
+           </li>
+          </ul>
+          <i class="icofont-tags">
+          </i>
+          <ul class="tags">
+           <li>
+            <a href="#">
+             Creative
+            </a>
+           </li>
+           <li>
+            <a href="#">
+             Tips
+            </a>
+           </li>
+           <li>
+            <a href="#">
+             Marketing
+            </a>
+           </li>
+          </ul>
+         </div>
+         <div class="float-right share">
+          <a href="" title="Share on Twitter">
+           <i class="icofont-twitter">
+           </i>
+          </a>
+          <a href="" title="Share on Facebook">
+           <i class="icofont-facebook">
+           </i>
+          </a>
+          <a href="" title="Share on Instagram">
+           <i class="icofont-instagram">
+           </i>
+          </a>
+         </div>
+        </div>
+       </article>
+       <!-- End blog entry -->
+
+       
+       {% if blog.author %}
+        {% with blog.author as author %}
+          
+        <div class="blog-author clearfix">
+        <img alt="" class="rounded-circle float-left" src="{% static 'core/assets/img/blog-author.jpg' as x%} {{ author.profile_pic.url}}"/>
+        <h4>
+         {{ author.get_name|upper }}
+        </h4>
+        <div class="social-links">
+        <a href="https://twitters.com/#">
+        <i class="icofont-twitter">
+        </i>
+        </a>
+        <a href="https://facebook.com/#">
+        <i class="icofont-facebook">
+        </i>
+        </a>
+        <a href="https://instagram.com/#">
+        <i class="icofont-instagram">
+        </i>
+        </a>
+        </div>
+        <p>
+         {{ author.description }}
+        </p>
+        </div>
+        <!-- End blog author bio -->
+
+        {% endwith %}
+       {% endif %}
+
+
+       <div class="blog-comments" id="c-sec">
+        <h4 class="comments-count">
+         {{ blog.c_len }}
+        </h4>
+        
+        
+        {% for comment in blog.comments.all %}
+               <div class="comment clearfix" id="comment-1">
+         <img alt="" class="comment-img float-left" src="{% static 'core/assets/img/comments-1.jpg' as default_pic %} {% if comment.user %}{{comment.user.profile_pic.url}}{% else %}{{ default_pic }}{% endif %}"/>        
+         <h5>
+          <a href="">
+           <!-- Georgia Reader -->
+           {{ comment.get_username|title }}
+          </a>
+          <a class="reply" href="#">
+           <i class="icofont-reply">
+           </i>
+           Reply
+          </a>
+         </h5>
+         <time datetime="2020-01-01">
+             {{ comment.created_when|naturaltime }}
+         </time>
+         <p>
+          {{ comment.comment_text }}
+         </p>
+        </div> 
+        {% endfor %}
+                
+        <div class="reply-form">
+         <h4>
+          Leave a Reply
+         </h4>
+         <p>
+          {% if not user.is_anonymous %}{{ user.username }} you can post as yourself or <a href="{% url 'admin:logout' %}">logout</a>{% endif %}
+         </p>
+         <form action="{% url 'core:blog_comment' blog.slug %}" method="POST">
+                 {% csrf_token %}
+        {% if user.is_anonymous %}
+          <div class="row">
+           <div class="col-md-6 form-group">
+            <input class="form-control" name="name" placeholder="Your Name*" type="text" required max_length="250" />
+           </div>
+           <div class="col-md-6 form-group">
+            <input class="form-control" name="email" placeholder="Your Email*" type="email"/>
+           </div>
+          </div>
+          {% endif %}
+          <div class="row">
+           <div class="col form-group">
+            <textarea class="form-control" name="comment" placeholder="Your Comment*"></textarea>
+           </div>
+          </div>
+          <button class="btn btn-primary" type="submit">Post Comment</button>
+         </form>
+        </div>
+       </div>
+       <!-- End blog comments -->
+      </div>
+      <div class="col-lg-4">
+          {% include "./blog_sidebar.html" %}
+      </div>
+      <!-- End blog entries list -->
+      </div>
+      <!-- End blog sidebar -->
+     </div>
+     <!-- End row -->
+    </div>
+    <!-- End container -->
+   </section>
+   <!-- End Blog Section -->
+  </main>
+
+{% endblock content %}

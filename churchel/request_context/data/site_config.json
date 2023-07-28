@@ -1,0 +1,12 @@
+{
+    "site_name": "Churchel",
+    "site_desc": "Churchel is a place of worship and fellowship with Christ our Lord.",
+    "site_links": [
+        "core:index",
+        "core:about",
+        "core:services",
+        "core:portfolio",
+        "core:blog",
+        "core:contact"
+    ]
+}

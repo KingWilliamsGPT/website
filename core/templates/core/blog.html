@@ -1,0 +1,85 @@
+{% extends './base.html' %}
+{% load static help humanize %}
+
+
+
+{% block title %}
+    Blogs
+{% endblock title %}
+
+{% block content %}
+{% set_links %}
+<main id="main">
+    <!-- ======= Blog Section ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>
+                    Blog
+                </h2>
+                <ol>
+                    <li>
+                        <a href="{{ index_link }}">Home</a>
+                    </li>
+                    <li>
+                        Blog
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </section>
+    <!-- End Blog Section -->
+    <!-- ======= Blog Section ======= -->
+    <section class="blog" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 entries">
+                    {% for blog in blogs %}
+                        {% url 'core:blog_detail' blog.slug as blog_link %}
+                        <article class="entry">
+                            <div class="entry-img text-center">
+                                <img alt="" class="img-fluid" src="{{ blog.image.url }}" />
+                            </div>
+                            <h2 class="entry-title">
+                                <a href="{{ blog_link }}">{{ blog.title }}</a>
+                            </h2>
+                            <div class="entry-meta">
+                                <ul>
+                                    <li class="d-flex align-items-center">
+                                        <i class="icofont-wall-clock"></i>
+                                        <a href="{% static 'core/blog-single.html' %}"><time datetime="2020-01-01">{{ blog.created_when|naturaltime }}</time>
+                                        </a>
+                                    </li>
+                                    <li class="d-flex align-items-center">
+                                        <i class="icofont-comment"></i>
+                                        <a href="{{ blog_link }}#c-sec">{{ blog.c_len }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="entry-content">
+                                <p>
+                                    {{ blog.get_short_post|safe }}
+                                </p>
+                                <div class="read-more">
+                                    <a href="{{ blog_link }}">Read More</a>
+                                </div>
+                            </div>
+                        </article>
+                    <!-- End blog entry -->
+                    {% endfor %}
+                    {% include "./pagination.html" %}
+                </div>
+                <!-- End blog entries list -->
+                <div class="col-lg-4">
+                    {% include "./blog_sidebar.html" %}
+                </div>
+                <!-- End blog sidebar -->
+            </div>
+            <!-- End .row -->
+        </div>
+        <!-- End .container -->
+    </section>
+    <!-- End Blog Section -->
+</main>
+<!-- End #main -->
+{% endblock content %}
